@@ -1,8 +1,24 @@
-export class File {
-  static readonly CSV = new File('.csv', [
+export class FileTypes {
+  static readonly CSV = new FileTypes('.csv', [
     'text/csv',
     'application/csv',
     'application/vnd.ms-excel',
+  ]);
+  static readonly XLSX = new FileTypes('.xlsx', [
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  ]);
+  static readonly JPG = new FileTypes('.jpg', ['image/jpeg']);
+  static readonly PNG = new FileTypes('.png', ['image/png']);
+  static readonly PDF = new FileTypes('.pdf', ['application/pdf']);
+  static readonly DOC = new FileTypes('.doc', ['application/msword']);
+  static readonly DOCX = new FileTypes('.docx', [
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  ]);
+  static readonly PPT = new FileTypes('.ppt', [
+    'application/vnd.ms-powerpoint',
+  ]);
+  static readonly PPTX = new FileTypes('.pptx', [
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
   ]);
 
   private constructor(
