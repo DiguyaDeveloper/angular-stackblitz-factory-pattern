@@ -1,17 +1,42 @@
-export interface FileType {
-  files: File[];
-  validateFiles(files: File[]): boolean;
-  uploadFiles(): void;
+export class File {
+  static readonly CSV = new File('.csv', [
+    'text/csv',
+    'application/csv',
+    'application/vnd.ms-excel',
+  ]);
+
+  private constructor(
+    private readonly key: string,
+    private readonly type: string[]
+  ) {}
 }
 
-export abstract class FileFactory {}
+interface Product {
+  operation(type: string, extension: string[]): string;
+}
 
-export class MyComponent implements FileType {
-  files: File[];
-  validateFiles(files: File[]): boolean {
-    throw new Error('Method not implemented.');
+export abstract class CreatorFile {
+  public abstract factoryMethod(): Product;
+
+  public someOperation(): string {
+    const product = this.factoryMethod();
+
+    return product.operation('.csv', [
+      'text/csv',
+      'application/csv',
+      'application/vnd.ms-excel',
+    ]);
   }
-  uploadFiles(): void {
-    throw new Error('Method not implemented.');
+}
+
+class ConcreteCreator extends CreatorFile {
+  public factoryMethod(): Product {
+    return new ConcreteProduct();
+  }
+}
+
+class ConcreteProduct implements Product {
+  public operation(): string {
+    return '{Result of the ConcreteProduct1}';
   }
 }
