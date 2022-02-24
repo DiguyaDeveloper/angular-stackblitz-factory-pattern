@@ -3,4 +3,5 @@ export interface FileExtensions {
   types: string[];
   getTypes(): string[];
   getExtension(): string;
+  validation(type: string): boolean;
 }

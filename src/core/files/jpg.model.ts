@@ -18,4 +18,8 @@ export class Jpg extends FileAbstract implements FileExtensions {
   getExtension(): string {
     return this.extension;
   }
+
+  validation(type: string): boolean {
+    return super.validation(type, this.types);
+  }
 }

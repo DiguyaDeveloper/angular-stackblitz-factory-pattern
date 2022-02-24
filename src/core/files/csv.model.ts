@@ -11,11 +11,15 @@ export class Csv extends FileAbstract implements FileExtensions {
     this.types = types;
   }
 
+  getExtension(): string {
+    return this.extension;
+  }
+
   getTypes(): string[] {
     return this.types;
   }
 
-  getExtension(): string {
-    return this.extension;
+  validation(type: string): boolean {
+    return super.validation(type, this.types);
   }
 }
