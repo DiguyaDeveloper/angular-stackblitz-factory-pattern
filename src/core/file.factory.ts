@@ -1,3 +1,4 @@
+import { FileExtensions } from './file';
 import { FileEnum } from './file.enum';
 import { Csv } from './files/csv.model';
 import { Doc } from './files/doc.model';
@@ -10,7 +11,7 @@ import { Pptx } from './files/pptx.model';
 import { Xlsx } from './files/xlsx.model';
 
 export class FileFactory {
-  static factory(type: FileEnum) {
+  static factory(type: FileEnum): FileExtensions {
     switch (type) {
       case FileEnum.CSV:
         return new Csv('.csv', [
