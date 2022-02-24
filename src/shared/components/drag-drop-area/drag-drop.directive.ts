@@ -22,10 +22,6 @@ export class DragDropDirective extends FileAbstract {
   @Output() private filesInvalidEmitter: EventEmitter<File> =
     new EventEmitter();
 
-  constructor() {
-    super('', ['']);
-  }
-
   @HostBinding('class.dragging') get dragInProgress() {
     return this._dragInProgress;
   }
@@ -54,11 +50,11 @@ export class DragDropDirective extends FileAbstract {
 
     const file: File = files[0];
 
-    if (super.validation(file.type)) {
-      this.filesChangeEmitter.emit(file);
-    } else {
-      this.filesInvalidEmitter.emit();
-    }
+    // if (super.validation(file.type)) {
+    //   this.filesChangeEmitter.emit(file);
+    // } else {
+    //   this.filesInvalidEmitter.emit();
+    // }
 
     this._dragInProgress = false;
   }
