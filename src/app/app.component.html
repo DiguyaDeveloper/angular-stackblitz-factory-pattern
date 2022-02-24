@@ -1,4 +1,9 @@
 <hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
+
+<p>File Factory presentation</p>
+<p>Type: {{ file.getExtension() }}</p>
+
+<p *ngFor="let item of file.getTypes()">
+  Extensão permitida:
+  <strong>{{ item }}</strong>
 </p>
