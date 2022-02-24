@@ -7,9 +7,16 @@ export abstract class FileAbstract {
     this.types = types;
   }
 
-  validation(type: string): boolean {
+  /**
+   * Check type upload file is valid extension
+   * Check size file is valid extension
+   * @param type: string
+   * @returns boolean
+   */
+  validation(type: string, types: string[]): boolean {
+    const toValidate = types || this.types;
     return (
-      this.types.filter((ext: string) => {
+      toValidate.filter((ext: string) => {
         return ext === type;
       }).length > 0
     );

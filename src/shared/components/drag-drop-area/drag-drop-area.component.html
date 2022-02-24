@@ -1,0 +1,37 @@
+<span [ngSwitch]="dragAreaType.value">
+  <div *ngSwitchCase="'valid'">
+    <div class="drag-zone drag-zone--valid">
+      <i class="icon"><img [src]="icon" [alt]="alt" /></i>
+      <div class="container">
+        <p class="information">{{ title }}</p>
+        <p class="validation">{{ message }}</p>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'invalid'">
+    <div class="drag-zone drag-zone--invalid">
+      <i class="icon icon--invalid"><img [src]="icon" [alt]="alt" /></i>
+      <div class="container container--invalid">
+        <p class="information">{{ title }}</p>
+        <p class="validation" (click)="resetDropArea()">
+          {{ message }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchDefault>
+    <div
+      [fileDragDrop]="allowedExtensions"
+      (filesInvalidEmitter)="dropInvalidFile()"
+      class="drag-zone"
+    >
+      <i class="icon icon"><img [src]="icon" [alt]="alt" /></i>
+      <div class="container">
+        <p class="information">{{ title }}</p>
+        <p class="validation">
+          {{ message }}
+        </p>
+      </div>
+    </div>
+  </div>
+</span>

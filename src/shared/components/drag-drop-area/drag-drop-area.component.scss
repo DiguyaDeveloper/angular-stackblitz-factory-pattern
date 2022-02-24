@@ -1,0 +1,62 @@
+.drag-zone {
+  display: flex;
+  border-radius: 8px;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 8px;
+  border-color: #d7d7d7;
+  border-width: 2px;
+  border-style: dashed;
+  color: #0e7f61;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #ffffff;
+  padding-left: 30px;
+
+  &.dragging {
+    border: 2px dashed #bdd753;
+  }
+
+  .container {
+    flex-direction: column;
+
+    .information {
+      font-weight: 400;
+    }
+
+    .validation {
+      font-weight: 600;
+    }
+
+    &--invalid {
+      .information {
+        font-weight: 600;
+        color: $red;
+      }
+    }
+
+    &--max-width {
+      max-width: 215px;
+    }
+  }
+
+  &--valid {
+    border: 2px solid #0e7f61;
+  }
+  &--invalid {
+    border: 2px solid #d2373c;
+  }
+
+  .icon {
+    margin-right: 24px;
+
+    &--invalid {
+      img {
+        color: #d2373c;
+      }
+    }
+  }
+}

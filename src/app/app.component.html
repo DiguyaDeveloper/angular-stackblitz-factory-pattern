@@ -9,3 +9,9 @@
 </p>
 
 <p>Validation: {{ file.validation('text/csv') }}</p>
+
+<p>Drop Area</p>
+<app-drag-drop-area
+  [allowedExtensions]="allowedExtensions"
+  (eventFileUploaded)="readFile($event)"
+></app-drag-drop-area>
