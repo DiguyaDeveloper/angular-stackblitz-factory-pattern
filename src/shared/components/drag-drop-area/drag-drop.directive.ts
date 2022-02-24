@@ -12,7 +12,7 @@ import { FileAbstract } from '../../../core/file.abstract';
 @Directive({
   selector: '[fileDragDrop]',
 })
-export class DragDropDirective extends FileAbstract {
+export class DragDropDirective {
   private _dragInProgress: boolean;
 
   @Output() private filesChangeEmitter: EventEmitter<File> = new EventEmitter();

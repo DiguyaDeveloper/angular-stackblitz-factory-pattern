@@ -13,10 +13,9 @@ export abstract class FileAbstract {
    * @param type: string
    * @returns boolean
    */
-  validation(type: string, types: string[]): boolean {
-    const toValidate = types || this.types;
+  validation(type: string): boolean {
     return (
-      toValidate.filter((ext: string) => {
+      this.types.filter((ext: string) => {
         return ext === type;
       }).length > 0
     );
