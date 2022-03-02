@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
-import { DragDropAreaComponent } from '../shared/components/drag-drop-area/drag-drop-area.component';
-import { DragDropDirective } from '../shared/components/drag-drop-area/drag-drop.directive';
-import { DatePipe } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule],
-  declarations: [
-    AppComponent,
-    HelloComponent,
-    DragDropAreaComponent,
-    DragDropDirective,
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    SharedModule,
   ],
-  providers: [DatePipe],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
