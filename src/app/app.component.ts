@@ -1,43 +1,24 @@
-import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { BehaviorSubject } from 'rxjs';
-import { appColumns } from './app.table';
-import { TableColumns } from './core/interfaces/table-columns.interface';
-import { TableImplAbstract } from './shared/components/table-custom/table/table.abstract';
-import { TableFactory } from './shared/components/table-custom/table/table.factory';
-import { Table } from './shared/components/table-custom/table/tables/table.class';
+import { Component, OnInit, VERSION } from '@angular/core';
+import { FileExtensions } from '../core/file';
+import { FileEnum } from '../core/file.enum';
+import { FileFactory } from '../core/file.factory';
 
-type Contracts = {
-  id: number;
-  value: number;
-  description: number;
-};
 @Component({
-  selector: 'app-root',
+  selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements TableImplAbstract<Contracts> {
-  columns = new BehaviorSubject<TableColumns<Contracts>[]>(appColumns);
+export class AppComponent implements OnInit {
+  name = 'Angular ' + VERSION.major;
+  file = FileFactory.factory(FileEnum.CSV);
+  allowedExtensions: FileExtensions[] = [FileFactory.factory(FileEnum.CSV)];
+  uploadedFile: File;
 
-  dataSource: MatTableDataSource<Contracts>;
-
-  tableFactory: Table<Contracts>;
-
-  ngOnInit(): void {
-    this.tableFactory = this.getTableFactory();
+  ngOnInit() {
+    console.log(this.file.getExtension(), this.file.getTypes());
   }
 
-  getTableFactory(): Table<Contracts> {
-    return TableFactory.factory(
-      this.columns,
-      new MatTableDataSource([
-        {
-          id: 0,
-          value: 0,
-          description: 0,
-        },
-      ])
-    );
+  readFile(file: File): void {
+    this.uploadedFile = file;
   }
 }

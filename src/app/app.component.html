@@ -1,2 +1,17 @@
-<ceccoff-table [table]="tableFactory"></ceccoff-table> aaa
-<!-- {{ tableFactory | json }} -->
+<hello name="{{ name }}"></hello>
+
+<p>File Factory presentation</p>
+<p>Type: {{ file.getExtension() }}</p>
+
+<p *ngFor="let item of file.getTypes()">
+  Extensão permitida:
+  <strong>{{ item }}</strong>
+</p>
+
+<p>Validation: {{ file.validation('text/csv') }}</p>
+
+<p>Drop Area</p>
+<app-drag-drop-area
+  [allowedExtensions]="allowedExtensions"
+  (eventFileUploaded)="readFile($event)"
+></app-drag-drop-area>
